@@ -1,6 +1,8 @@
-export const reducer = (state = [], action) => {
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from './elements_const';
+
+export const elements = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_TODO': {
+    case ADD_TODO: {
       return [
         ...state,
         {
@@ -11,11 +13,11 @@ export const reducer = (state = [], action) => {
       ];
     }
 
-    case 'REMOVE_TODO': {
+    case REMOVE_TODO: {
       return state.filter((element) => element.id !== action.id);
     }
 
-    case 'TOGGLE_TODO': {
+    case TOGGLE_TODO: {
       return state.map((element) =>
         element.id === action.id ? { ...element, completed: !element.completed } : element,
       );

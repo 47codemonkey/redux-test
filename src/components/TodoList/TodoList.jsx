@@ -1,9 +1,8 @@
-import { removeTodo, toggleTodo } from '../redux/actions/actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { removeTodo, toggleTodo } from '../../store/elements/elements_actions';
+import { useTodoList } from './hook';
 
 export const TodoList = () => {
-  const elements = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const { elements, dispatch } = useTodoList();
 
   return (
     <ul>
