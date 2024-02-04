@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { allElements } from '../../store/elements/elements_selectors';
+import { selectVisibleElements } from '../../store/elements/elements_selectors';
+import { selectActiveFilter } from '../../store/filters/filters_selectors';
 
 export const useTodoList = () => {
-  const elements = useSelector(allElements);
+  const activeFilter = useSelector(selectActiveFilter);
+  const elements = useSelector((state) => selectVisibleElements(state, activeFilter));
+
   const dispatch = useDispatch();
 
   return { elements, dispatch };
